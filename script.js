@@ -1,10 +1,10 @@
-const video = document.getElementById('video')
+const webcamElement = document.getElementById('webcam');
+const webcam = new Webcam(webcamElement, 'user');
 
-function startVideo(){
-    navigator.mediaDevices.getUserMedia(
-        {video: {} },
-        stream => video.srcObject = stream,
-        err => console.error(err)
-    )
-}
-startVideo()
+webcam.start()
+  .then(result =>{
+    console.log("webcam started");
+  })
+  .catch(err => {
+    console.log(err);
+});
